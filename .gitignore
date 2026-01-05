@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Index artifacts
+index/
+
+# Output artifacts
+output/
+
+# Node
+ui/node_modules/
+ui/dist/
+
+# OS
+.DS_Store

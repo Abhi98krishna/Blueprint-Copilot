@@ -1,0 +1,6 @@
+[submodule "data/calm-dsl"]
+	path = data/calm-dsl
+	url = https://github.com/nutanix/calm-dsl
+[submodule "data/dsl-samples"]
+	path = data/dsl-samples
+	url = https://github.com/nutanixdev/dsl-samples

@@ -1,0 +1,1 @@
+"""Blueprint Buddy app package."""
