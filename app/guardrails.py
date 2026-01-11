@@ -1,4 +1,4 @@
-from typing import Iterable
+from typing import Iterable, Optional
 
 from app.retrieve import RetrievedChunk
 
@@ -13,7 +13,32 @@ def is_confident(results: Iterable[RetrievedChunk]) -> bool:
 
 
 def unsupported_response() -> str:
-    return "I can't support that from the DSL/blueprint code I indexed."
+    return (
+        "Direct answer: I am not confident. I did not find relevant DSL or blueprint code.\n"
+        "\n"
+        "Supporting examples (collapsed by default):\n"
+        "<details>\n"
+        "<summary>Supporting examples</summary>\n"
+        "None.\n"
+        "</details>\n"
+        "\n"
+        "Limitation: No matching code was retrieved."
+    )
+
+
+def format_response(direct_answer: str, examples: str, limitation: Optional[str] = None) -> str:
+    parts = [
+        f"Direct answer: {direct_answer}",
+        "",
+        "Supporting examples (collapsed by default):",
+        "<details>",
+        "<summary>Supporting examples</summary>",
+        examples.strip() or "None.",
+        "</details>",
+    ]
+    if limitation:
+        parts.extend(["", f"Limitation: {limitation}"])
+    return "\n".join(parts)
 
 
 def format_citation(chunk: RetrievedChunk) -> str:
